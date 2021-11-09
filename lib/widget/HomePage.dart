@@ -28,33 +28,36 @@ class _HomePageState extends State<HomePage> {
                     Data user = list[index];
                     return ListTile(
                       onTap: () {
-                        // ignore: unused_element
-                        showAlertDialog(BuildContext context) {
-                          // set up the button
-                          Widget okButton = TextButton(
-                            child: Text("OK"),
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                          );
-
-                          // set up the AlertDialog
-                          AlertDialog alert = AlertDialog(
-                            title: Text(user.firstName + " " + user.lastName),
-                            content: Text(user.email),
-                            actions: [
-                              okButton,
-                            ],
-                          );
-
-                          // show the dialog
-                          showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return alert;
-                            },
-                          );
-                        }
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: Text("User Details"),
+                              content: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Text('FullName: ' +
+                                      user.firstName +
+                                      " " +
+                                      user.lastName),
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 5),
+                                    child: Text('Email: ' + user.email),
+                                  ),
+                                ],
+                              ),
+                              actions: [
+                                TextButton(
+                                  child: Text("Close"),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                )
+                              ],
+                            );
+                          },
+                        );
                       },
                       title: Text(user.firstName),
                       leading: CircleAvatar(
