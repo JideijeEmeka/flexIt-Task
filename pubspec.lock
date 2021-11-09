@@ -109,6 +109,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.7.0"
+  mvc_pattern:
+    dependency: "direct main"
+    description:
+      name: mvc_pattern
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "7.4.0"
   path:
     dependency: transitive
     description:

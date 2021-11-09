@@ -15,7 +15,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("User List"),
+          title: Text("List of Users"),
         ),
         body: FutureBuilder<Response>(
           future: _apiServiceProvider.getUser(),
@@ -26,8 +26,9 @@ class _HomePageState extends State<HomePage> {
                   itemCount: list.length,
                   itemBuilder: (context, index) {
                     Data user = list[index];
-                    return GestureDetector(
+                    return ListTile(
                       onTap: () {
+                        // ignore: unused_element
                         showAlertDialog(BuildContext context) {
                           // set up the button
                           Widget okButton = TextButton(
@@ -55,11 +56,9 @@ class _HomePageState extends State<HomePage> {
                           );
                         }
                       },
-                      child: ListTile(
-                        title: Text(user.firstName),
-                        leading: CircleAvatar(
-                          backgroundImage: NetworkImage(user.avatar),
-                        ),
+                      title: Text(user.firstName),
+                      leading: CircleAvatar(
+                        backgroundImage: NetworkImage(user.avatar),
                       ),
                     );
                   });
