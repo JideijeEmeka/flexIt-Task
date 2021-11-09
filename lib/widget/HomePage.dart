@@ -13,6 +13,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends StateMVC<HomePage> {
+  
   ApiServiceProvider _apiServiceProvider = new ApiServiceProvider();
   _HomePageState() : super(AuthController()) {
     con = controller as AuthController;
@@ -22,6 +23,8 @@ class _HomePageState extends StateMVC<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+  
+
     return WillPopScope(
         onWillPop: () async => false,
         child: Scaffold(
@@ -50,19 +53,25 @@ class _HomePageState extends StateMVC<HomePage> {
                                         CrossAxisAlignment.start,
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
-                                      Text('FullName: ' +
-                                          user.firstName +
-                                          " " +
-                                          user.lastName),
+                                      Text(
+                                        'FullName: ' +
+                                            user.firstName +
+                                            " " +
+                                            user.lastName,
+                                        style: TextStyle(color: Colors.blue),
+                                      ),
                                       Padding(
                                         padding: const EdgeInsets.only(top: 5),
-                                        child: Text('Email: ' + user.email),
+                                        child: Text('Email: ' + user.email,
+                                            style:
+                                                TextStyle(color: Colors.blue)),
                                       ),
                                     ],
                                   ),
                                   actions: [
                                     TextButton(
-                                      child: Text("Close"),
+                                      child: Text("Close",
+                                          style: TextStyle(color: Colors.red)),
                                       onPressed: () {
                                         Navigator.of(context).pop();
                                       },
